@@ -2,7 +2,7 @@
    Tables checked against the Basic Rulebook edited by Tom Moldvay (TSR, 1981). Mechanics and tables only. */
 (function(){
 const R={id:'basic',label:'D&D Basic Set (1981)',bookName:'Basic rulebook',noRaces:true,defaultRace:'none',wtUnit:'cn',rangeUnit:"'",
- footer:'Rules follow the 1981 D&D Basic Set (levels 1 to 3). Monsters, treasure tables and spell descriptions stay in the book.',
+ footer:'Rules follow the 1981 D&D Basic Set (levels 1 to 3). Full monster descriptions, magic item explanations and adventures stay in the book.',
  maxNote:' in the Basic rules (the Expert set continues from here)'};
 R.abilities=['str','int','wis','dex','con','cha'];
 R.abilityNames={str:'Strength',int:'Intelligence',wis:'Wisdom',dex:'Dexterity',con:'Constitution',cha:'Charisma'};
