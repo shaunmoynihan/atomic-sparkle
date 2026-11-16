@@ -40,10 +40,10 @@ function viewAuth(mode){
   <div class="card"><h2>${mode==='login'?'Sign in':'Create your account'}</h2>
    ${mode==='reg'?'<label>Your name</label><input id="a_name" autocomplete="name" maxlength="40" placeholder="What the table calls you">':''}
    <label>Phone number</label><input id="a_phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(919) 555-0123">
-   <label>PIN (4 to 8 digits)</label><input id="a_pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="8" autocomplete="${mode==='login'?'current-password':'new-password'}" placeholder="••••">
+   <label>${mode==='login'?'Your PIN':'Make up a PIN (4 to 8 digits)'}</label><input id="a_pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="8" autocomplete="${mode==='login'?'current-password':'new-password'}" placeholder="${mode==='login'?'The PIN you chose':'Any digits you will remember'}">${mode==='login'?'':'<div class="small mute" style="margin-top:4px">This is your password. You choose it; nothing is sent to your phone.</div>'}
    <div style="height:14px"></div><button class="btn block" data-act="${mode==='login'?'login':'register'}">${mode==='login'?'Sign in':'Create account'}</button>
    <button class="btn ghost block" data-act="authmode" data-mode="${mode==='login'?'reg':'login'}">${mode==='login'?'New here? Create an account':'Already have an account? Sign in'}</button></div>
-   <p class="mute small" style="text-align:center">Your phone number is your login name. No texts are sent.</p></div>`;
+   <p class="mute small" style="text-align:center">Your phone number is only your login name. No texts or codes are sent.</p></div>`;
 }
 async function afterAuth(r){ if(r.error) throw new Error(r.error); S.token=r.token;S.user=r.user; LS.set('token',S.token);LS.set('user',S.user); await loadHome(); }
 async function loadHome(){ const r=await call('as_me'); S.user=r.user;S.campaigns=r.campaigns; LS.set('user',S.user); if(S.cid&&!S.campaigns.find(c=>c.id===S.cid)) S.cid=null; if(!S.cid&&S.campaigns.length===1) S.cid=S.campaigns[0].id; if(S.cid) await enter(S.cid); else render(); }
