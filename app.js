@@ -34,16 +34,16 @@ async function guard(fn){ if(S.busy)return; S.busy=true; try{ await fn(); }catch
 
 // ---------- auth ----------
 function signOut(silent){ if(S.token&&!silent) api('as_logout',{p_token:S.token}).catch(()=>{}); S.token=null;S.user=null;S.cid=null; LS.del('token');LS.del('user');LS.del('cid'); stopPoll(); render(); }
-function viewAuth(mode){
-  mode=mode||'login';
+function viewAuth(step){
+  const name=step==='name';
   $('#app').innerHTML=`<div class="center"><div class="hero">${ICON.spark.replace('class="spark"','')}<h1>Atomic Sparkle</h1><p>Your party's table, in your pocket.</p></div>
-  <div class="card"><h2>${mode==='login'?'Sign in':'Create your account'}</h2>
-   ${mode==='reg'?'<label>Your name</label><input id="a_name" autocomplete="name" maxlength="40" placeholder="What the table calls you">':''}
-   <label>Phone number</label><input id="a_phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(919) 555-0123">
-   <label>${mode==='login'?'Your PIN':'Make up a PIN (4 to 8 digits)'}</label><input id="a_pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="8" autocomplete="${mode==='login'?'current-password':'new-password'}" placeholder="${mode==='login'?'The PIN you chose':'Any digits you will remember'}">${mode==='login'?'':'<div class="small mute" style="margin-top:4px">This is your password. You choose it; nothing is sent to your phone.</div>'}
-   <div style="height:14px"></div><button class="btn block" data-act="${mode==='login'?'login':'register'}">${mode==='login'?'Sign in':'Create account'}</button>
-   <button class="btn ghost block" data-act="authmode" data-mode="${mode==='login'?'reg':'login'}">${mode==='login'?'New here? Create an account':'Already have an account? Sign in'}</button></div>
-   <p class="mute small" style="text-align:center">Your phone number is only your login name. No texts or codes are sent.</p></div>`;
+  <div class="card"><h2>${name?'One more thing':'Come on in'}</h2>
+   ${name?`<p class="mute small" style="margin:0">New here. What should the table call you?</p><label>Your name</label><input id="a_name" autocomplete="name" maxlength="40" placeholder="What the table calls you">
+   <div style="height:14px"></div><button class="btn block" data-act="authname">Join</button><button class="btn ghost block" data-act="authback">Use a different number</button>`
+   :`<label>Your phone number</label><input id="a_phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(919) 555-0123" value="${esc(S.authPhone||'')}">
+   <div style="height:14px"></div><button class="btn block" data-act="authgo">Continue</button>`}</div>
+   <p class="mute small" style="text-align:center">Your phone number is how the app knows you. No texts, codes or passwords.</p></div>`;
+  const f=$(name?'#a_name':'#a_phone'); if(f){ f.addEventListener('keydown',e=>{ if(e.key==='Enter') actions[name?'authname':'authgo'](); }); if(name) f.focus(); }
 }
 async function afterAuth(r){ if(r.error) throw new Error(r.error); S.token=r.token;S.user=r.user; LS.set('token',S.token);LS.set('user',S.user); await loadHome(); }
 async function loadHome(){ const r=await call('as_me'); S.user=r.user;S.campaigns=r.campaigns; LS.set('user',S.user); if(S.cid&&!S.campaigns.find(c=>c.id===S.cid)) S.cid=null; if(!S.cid&&S.campaigns.length===1) S.cid=S.campaigns[0].id; if(S.cid) await enter(S.cid); else render(); }
@@ -396,9 +396,9 @@ async function reveal(name){ const kn=known(); if(kn.includes(name)) return; awa
 
 // ---------- actions ----------
 const actions={
-  authmode(el){ viewAuth(el.dataset.mode); },
-  login(){ guard(async()=>afterAuth(await api('as_login',{p_phone:$('#a_phone').value,p_pin:$('#a_pin').value}))); },
-  register(){ guard(async()=>afterAuth(await api('as_register',{p_phone:$('#a_phone').value,p_pin:$('#a_pin').value,p_name:$('#a_name').value}))); },
+  authgo(){ S.authPhone=$('#a_phone').value; guard(async()=>{ const r=await api('as_enter',{p_phone:S.authPhone,p_name:null}); if(r.need_name) return viewAuth('name'); await afterAuth(r); }); },
+  authname(){ const n=$('#a_name').value.trim(); if(!n) return toast('Enter your name',true); guard(async()=>afterAuth(await api('as_enter',{p_phone:S.authPhone,p_name:n}))); },
+  authback(){ viewAuth(); },
   signout(){ signOut(); }, switch(){ S.cid=null; LS.del('cid'); stopPoll(); S.campaign=null; guard(loadHome); },
   enter(el){ guard(()=>enter(el.dataset.id)); },
   join(){ guard(async()=>{ const r=await call('as_join_campaign',{p_code:$('#h_code').value}); await enter(r.id); }); },
