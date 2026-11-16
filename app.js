@@ -624,6 +624,10 @@ document.addEventListener('change',e=>{ const t=e.target; if(t.id==='b_race'||t.
 document.addEventListener('input',e=>{ if(e.target.id==='vol'){ SND.vol=e.target.value/100; LS.set('vol',SND.vol); if(SND.master) SND.master.gain.value=SND.vol; }
  if(e.target.dataset.cv){ let cp=0,n=0; document.querySelectorAll('[data-cv]').forEach(i=>{ const v=num(i.value); cp+=v*R.coins[i.dataset.cv]; n+=v; }); $('#cv_out').textContent=R.money(cp)+(cp>=R.coins.pp?` (${(cp/R.coins.pp).toLocaleString()} p.p.)`:''); $('#cv_wt').textContent=`${n.toLocaleString()} coins weigh ${(n/10).toFixed(1)} lb`; } });
 
+// On an iPhone home-screen app the page can be laid out shorter than the screen, leaving a gap under the tab bar.
+(function(){ const standalone=window.navigator.standalone===true||(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches); if(!standalone) return;
+  const fit=()=>{ const portrait=window.innerHeight>=window.innerWidth; const full=portrait?Math.max(screen.height,screen.width):Math.min(screen.height,screen.width); const h=Math.max(window.innerHeight,document.documentElement.clientHeight,/iP(hone|ad|od)/.test(navigator.userAgent)?full:0); document.documentElement.style.height=h+'px'; document.body.style.height=h+'px'; };
+  fit(); window.addEventListener('resize',fit); window.addEventListener('orientationchange',()=>setTimeout(fit,250)); setTimeout(fit,400); })();
 // ---------- boot ----------
 window.R=window.RULESETS.basic;
 if('serviceWorker' in navigator && location.protocol==='https:') navigator.serviceWorker.register('sw.js').catch(()=>{});
