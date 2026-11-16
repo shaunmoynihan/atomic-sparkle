@@ -33,7 +33,7 @@ h3{font-size:17px;color:var(--gold2)}
 #app{flex:1;display:flex;flex-direction:column;min-height:0}
 .top{padding:calc(var(--st) + 10px) 14px 10px;display:flex;align-items:center;gap:11px;background:linear-gradient(180deg,#1d1626f2,#120f19f2);border-bottom:1px solid #000;box-shadow:inset 0 -1px 0 #e0b35466,0 6px 18px #000a;position:relative}
 .top:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:linear-gradient(90deg,transparent,#ffe29a,transparent);opacity:.7}
-.top h1{font-size:19px;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:var(--goldgrad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.top h1{font-size:19px;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#f0cf7e}
 .top .sub{font:500 13px var(--sans);color:#b9ad97;display:block;letter-spacing:0;-webkit-text-fill-color:#b9ad97}
 .spark{width:34px;height:34px;flex:none;filter:drop-shadow(0 0 8px #e0b35488)}
 .view{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 13px 26px}
@@ -227,6 +227,7 @@ table{width:100%;border-collapse:collapse;font-size:14px}td,th{padding:6px 4px;b
 .hc-hint{color:#d2b98c;font:italic 16px var(--head)}
 @media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 @media (min-width:700px){#app{max-width:560px;margin:0 auto;border-left:1px solid var(--line);border-right:1px solid var(--line);width:100%}}
+@media (display-mode:standalone){.top{padding-top:calc(var(--st) + 16px)}}
 </style>
 </head>
 <body>
