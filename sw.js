@@ -1,5 +1,5 @@
 // Atomic Sparkle service worker: keeps the app shell available offline and fresh.
-const CACHE='atomic-sparkle-v25';
+const CACHE='atomic-sparkle-v26';
 const SHELL=['./','index.html','themes.css','app.js','rules.js','rules_basic.js','rules_basic_dm.js','manifest.webmanifest','icon-192.png','icon-512.png','apple-touch-icon.png'];
 self.addEventListener('install',e=>{ e.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)).then(()=>self.skipWaiting())); });
 self.addEventListener('activate',e=>{ e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())); });
