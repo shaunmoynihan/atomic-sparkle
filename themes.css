@@ -313,3 +313,11 @@ html[data-skin] .bar.lt{height:5px;margin-top:5px}html[data-skin] .bar.lt i{back
 .coinsro .zero{opacity:.45}
 
 .mlink{display:inline;padding:0;margin:0;border:0;background:none;font:inherit;color:inherit;text-align:inherit;text-decoration:underline;text-decoration-color:var(--amber);text-decoration-thickness:1.5px;text-underline-offset:3px;cursor:pointer}
+
+html[data-skin] .view.feedwrap{padding:0}
+html[data-skin] .view.feedwrap>.seg{margin:10px 12px 12px}
+.tgt{justify-content:space-between;text-align:left;margin-bottom:8px;min-height:52px}
+.chk{display:flex;align-items:center;gap:10px;margin-top:10px;min-height:44px}.chk input{width:22px;height:22px;flex:none;accent-color:var(--amber)}.chk b{display:block;font-size:15px;color:var(--k-text)}.chk small{display:block;font-size:13.5px;color:var(--k-mute)}
+.note .nt{font-size:15.5px;line-height:1.5;white-space:normal;overflow-wrap:anywhere}
+.note .nm{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:13.5px;color:var(--k-mute);min-height:32px}.note .nm .sp{flex:1}
+.tag.po{color:var(--amber);border-color:var(--amber)}
