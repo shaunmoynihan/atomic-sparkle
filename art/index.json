@@ -1,1 +1,65 @@
-{"portraits": {}, "looks": {"cleric": ["looks/cleric-1.jpg", "looks/cleric-2.jpg", "looks/cleric-3.jpg", "looks/cleric-4.jpg", "looks/cleric-5.jpg"], "dwarf": ["looks/dwarf-1.jpg", "looks/dwarf-2.jpg", "looks/dwarf-3.jpg", "looks/dwarf-4.jpg", "looks/dwarf-5.jpg"], "elf": ["looks/elf-1.jpg", "looks/elf-2.jpg", "looks/elf-3.jpg", "looks/elf-4.jpg", "looks/elf-5.jpg"], "fighter": ["looks/fighter-1.jpg", "looks/fighter-2.jpg", "looks/fighter-3.jpg", "looks/fighter-4.jpg", "looks/fighter-5.jpg"], "halfling": ["looks/halfling-1.jpg", "looks/halfling-2.jpg", "looks/halfling-3.jpg", "looks/halfling-4.jpg", "looks/halfling-5.jpg"], "magicuser": ["looks/magicuser-1.jpg", "looks/magicuser-2.jpg", "looks/magicuser-3.jpg", "looks/magicuser-4.jpg", "looks/magicuser-5.jpg"], "thief": ["looks/thief-1.jpg", "looks/thief-2.jpg", "looks/thief-3.jpg", "looks/thief-4.jpg", "looks/thief-5.jpg"]}}
+{
+ "portraits": {},
+ "looks": {
+  "cleric": [
+   "looks/cleric-1.jpg",
+   "looks/cleric-2.jpg",
+   "looks/cleric-3.jpg",
+   "looks/cleric-4.jpg",
+   "looks/cleric-5.jpg"
+  ],
+  "dwarf": [
+   "looks/dwarf-1.jpg",
+   "looks/dwarf-2.jpg",
+   "looks/dwarf-3.jpg",
+   "looks/dwarf-4.jpg",
+   "looks/dwarf-5.jpg",
+   "looks/dwarf-6.jpg",
+   "looks/dwarf-7.jpg"
+  ],
+  "elf": [
+   "looks/elf-1.jpg",
+   "looks/elf-2.jpg",
+   "looks/elf-3.jpg",
+   "looks/elf-4.jpg",
+   "looks/elf-5.jpg",
+   "looks/elf-6.jpg"
+  ],
+  "fighter": [
+   "looks/fighter-1.jpg",
+   "looks/fighter-2.jpg",
+   "looks/fighter-3.jpg",
+   "looks/fighter-4.jpg",
+   "looks/fighter-5.jpg",
+   "looks/fighter-6.jpg",
+   "looks/fighter-7.jpg"
+  ],
+  "halfling": [
+   "looks/halfling-1.jpg",
+   "looks/halfling-2.jpg",
+   "looks/halfling-3.jpg",
+   "looks/halfling-4.jpg",
+   "looks/halfling-5.jpg",
+   "looks/halfling-6.jpg",
+   "looks/halfling-7.jpg"
+  ],
+  "magicuser": [
+   "looks/magicuser-1.jpg",
+   "looks/magicuser-2.jpg",
+   "looks/magicuser-3.jpg",
+   "looks/magicuser-4.jpg",
+   "looks/magicuser-5.jpg",
+   "looks/magicuser-6.jpg",
+   "looks/magicuser-7.jpg"
+  ],
+  "thief": [
+   "looks/thief-1.jpg",
+   "looks/thief-2.jpg",
+   "looks/thief-3.jpg",
+   "looks/thief-4.jpg",
+   "looks/thief-5.jpg",
+   "looks/thief-6.jpg",
+   "looks/thief-7.jpg"
+  ]
+ }
+}
