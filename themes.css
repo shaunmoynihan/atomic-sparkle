@@ -638,3 +638,4 @@ html[data-skin] .lsearch input{flex:1;background:none;border:0;box-shadow:none;o
 .look.taken{cursor:not-allowed}.look.taken img{filter:grayscale(1) brightness(.4)}
 .lk-t,.lk-on{position:absolute;left:8px;right:8px;bottom:8px;padding:4px 8px;border-radius:8px;font:600 11px var(--k-body);text-align:center}
 .lk-t{background:rgba(5,7,11,.85);color:#cbd5e1}.lk-on{background:linear-gradient(180deg,#F6D277,#B4730F);color:#1c1004}
+.lgbtns{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}.lgbtns .btn{flex:1}
